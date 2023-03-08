@@ -1,0 +1,20 @@
+:host{
+  display: grid;
+  grid-template: 1fr 8fr 1fr/ 2fr 1fr;
+  height: 80vh;
+  width: 80vw;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px 1px #b269ffcb;
+  background-color: #FFFE82;
+  font-family: var(--font_special),sans-serif;
+  color:var(--font_color);
+}
+nav{
+  grid-column: span 2;
+}
+footer{
+  grid-column: span 2;
+}
+.reflect{
+  transform: rotate3d(0, 1, 0, 180deg);
+}
