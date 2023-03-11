@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  width: 80vw;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px 1px #263b00;
+  background-color: #a2fa00;
+  color: var(--font_color);
+  font-family: var(--font_special), sans-serif;
+}

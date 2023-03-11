@@ -1,20 +1,42 @@
-:host{
+:host {
   display: grid;
   grid-template: 1fr 8fr 1fr/ 2fr 1fr;
   height: 80vh;
   width: 80vw;
   border-radius: 1rem;
-  box-shadow: 0 5px 10px 1px #b269ffcb;
-  background-color: #FFFE82;
-  font-family: var(--font_special),sans-serif;
-  color:var(--font_color);
+  // box-shadow: 0 5px 10px 1px #b269ffcb;
+  box-shadow: 0 5px 10px 1px #263b00;
+  // background-color: #FFFE82;
+  background-color: #a2fa00;
+  color: var(--font_color);
+  font-family: var(--font_special), sans-serif;
 }
-nav{
+nav {
   grid-column: span 2;
 }
-footer{
+footer {
   grid-column: span 2;
 }
-.reflect{
+.reflect {
   transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.user {
+  background-color: #263b00;
+  color: #a2fa00;
+
+  &_options {
+    color: #a2fa00;
+    background-color: #263b00;
+    transition: all ease-in-out 0.5s;
+    z-index: 2;
+  }
+}
+.desplegar {
+  height: 20vh;
+}
+@media screen and (max-height: 695px) {
+  :host {
+    height: 90vh;
+  }
 }

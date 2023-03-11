@@ -1,15 +1,47 @@
 <nav class="flex justify-end py-2 pr-5">
-  <button class="shadow-md shadow-rose-500 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</button>
-  <button class="shadow-md shadow-rose-500 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Registrarse</button>
+  <div class="flex" *ngIf="!logStatus">
+    <button
+      class="shadow-md shadow-slate-500 text-slate-50 bg-gradient-to-r from-lime-800 via-lime-900 to-lime-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-lime-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+      (click)="toLogin()"
+    >
+      Login
+    </button>
+    <button
+      class="shadow-md shadow-slate-500 text-slate-50 bg-gradient-to-r from-lime-800 via-lime-900 to-lime-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-lime-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+      (click)="toLogin()"
+    >
+      Registrarse
+    </button>
+  </div>
+  <div *ngIf="logStatus" class="flex items-center relative rounded-t-lg user">
+    <button (click)="userOption()">
+      <img src="assets/account_circle_icon.svg" alt="person-icon" />
+    </button>
+    <span>{{ currentUser }}</span>
+    <div
+      #user
+      class="absolute top-full text-sm overflow-hidden h-0 px-2 rounded-b-lg flex flex-col items-center user_options"
+    >
+      <button class="border-b" (click)="logOut()">Cerrar sesión</button>
+      <button class="border-b">Cambiar contraseña</button>
+      <button class="border-b">Cambiar email</button>
+      <button class="border-b">Cambiar username</button>
+    </div>
+  </div>
 </nav>
 <main class="flex flex-col items-center">
-  <h1 class="text-4xl font-bold py-4">Trivia en ingles</h1>
+  <h1 class="text-4xl font-bold py-4">Trivia en inglés</h1>
   <div class="flex justify-between w-10/12">
-    <img src="assets/trivia-portada.svg" alt="Icon_image">
-    <img class="reflect" src="assets/trivia-portada.svg" alt="Icon_image">
+    <img src="assets/trivia-portada.svg" alt="Icon_image" />
+    <img class="reflect" src="assets/trivia-portada.svg" alt="Icon_image" />
   </div>
-  <div class="mt-5 w-1/2 ">
-    <button class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl w-full py-2.5 text-center mr-2 mb-2">Ir</button>
+  <div class="mt-5 w-1/2">
+    <button
+      class="text-white bg-green-800 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xl w-full py-2.5 text-center mr-2 mb-2"
+      (click)="toFilter()"
+    >
+      Ir
+    </button>
   </div>
 </main>
 <aside>

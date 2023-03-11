@@ -1,1 +1,85 @@
-<p>filter works!</p>
+<header class="py-2">
+  <h2 class="text-6xl font-bold">Selecciones los filtros</h2>
+</header>
+<section class="flex flex-col items-center">
+  <h3 class="text-3xl">NIVEL DE DIFICULTAD</h3>
+  <form #dificultad>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        checked
+        type="radio"
+        name="dificultad"
+        value="facil"
+        id="dificultad1"
+      /><label for="dificultad1">Facil</label>
+    </div>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        type="radio"
+        name="dificultad"
+        value="medio"
+        id="dificultad2"
+      /><label for="dificultad2">Medio</label>
+    </div>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        type="radio"
+        name="dificultad"
+        value="dificil"
+        id="dificultad3"
+      /><label for="dificultad3">Díficil</label>
+    </div>
+  </form>
+</section>
+<section class="flex flex-col items-center">
+  <h3 class="text-3xl">CATEGORÍA</h3>
+  <form #categoria>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        checked
+        type="radio"
+        name="categoria"
+        value="todos"
+        id="todos"
+      /><label for="todos">Todos</label>
+    </div>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        type="radio"
+        name="categoria"
+        value="historia"
+        id="historia"
+      /><label for="historia">Historia</label>
+    </div>
+    <div class="text-2xl w-1/2 py-4 flex">
+      <input
+        class="mr-4"
+        type="radio"
+        name="categoria"
+        value="general"
+        id="general"
+      /><label for="general">General</label>
+    </div>
+  </form>
+</section>
+<section class="flex flex-col items-center justify-evenly">
+  <button
+    class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
+    (click)="
+      comenzar(dificultad['dificultad'].value, categoria['categoria'].value)
+    "
+  >
+    Comenzar
+  </button>
+  <button
+    class="text-slate-900 bg-gradient-to-br from-green-500 to-green-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
+    (click)="back()"
+  >
+    Cancelar
+  </button>
+</section>

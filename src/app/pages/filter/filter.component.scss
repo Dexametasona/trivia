@@ -1,0 +1,17 @@
+:host{
+  display: grid;
+  grid-template:3fr 8fr/ repeat(3, 1fr);
+  height: 80vh;
+  width: 80vw;
+  border-radius: 1rem;
+  // box-shadow: 0 5px 10px 1px #b269ffcb;
+  box-shadow: 0 5px 10px 1px #263b00;
+  // background-color: #FFFE82;
+  background-color: #a2fa00;
+  color: var(--font_color);
+  font-family: var(--font_special), sans-serif;
+}
+header{
+  grid-column: span 3;
+  place-self: center center;
+}

@@ -6,6 +6,7 @@ import { FilterComponent } from './filter/filter.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,11 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports:[
-    CommonModule,
-    ReactiveFormsModule
+    HomeComponent,
+    LoginComponent,
+    FilterComponent,
+    QuestionsComponent,
+    NotFoundComponent
   ]
 })
 export class PagesModule { }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { PagesModule } from './pages/pages.module';
+import { QuestionPipe } from './pipes/question.pipe';
 
 var config = {
   apiKey: environment.firebase.apiKey,
@@ -20,7 +21,8 @@ var config = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuestionPipe
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,14 @@
-<p>questions works!</p>
+<header class="w-full bg-red-200">
+  <h2>{{data[numeroDe_pregunta].question}}</h2>
+</header>
+<section class="basis-7/12">
+  <div *ngFor="let respuesta of respuesta_visible">
+    <span>{{respuesta | titlecase}}</span>
+  </div>
+  <div>
+    <button>Siguiente</button>
+  </div>
+</section>
+<section class="basis-5/12 bg-slate-100">
+  <img src="assets/timer-icon.svg" alt="timer-icon">
+</section>
