@@ -13,13 +13,15 @@ import { QuestionDBService } from 'src/app/services/question-db.service';
 export class HomeComponent implements OnInit {
   logStatus = false;
   currentUser!: string;
-  dataRecord:Irecord[]=[
-    {email:"", score:0, time:{min:0, seg:0}}
-  ];
+  dataRecord: Irecord[] = [{ email: '', score: 0, time: { min: 0, seg: 0 } }];
 
   @ViewChild('user') lista!: ElementRef;
-  constructor(private route: Router, private auth: Auth, private recordDB:QuestionDBService) {}
-/* botones de redireccion para login y register-------------------------------------------------- */
+  constructor(
+    private route: Router,
+    private auth: Auth,
+    private recordDB: QuestionDBService
+  ) {}
+  /* botones de redireccion para login y register-------------------------------------------------- */
   toLogin() {
     this.route.navigate(['/login']);
   }
@@ -27,11 +29,11 @@ export class HomeComponent implements OnInit {
   toFilter() {
     this.route.navigate(['/filter']);
   }
-/* boton para iniciar el juego-------------------------------------------------------------------------- */
+  /* boton para iniciar el juego-------------------------------------------------------------------------- */
   userOption() {
     this.lista.nativeElement.classList.toggle('desplegar');
   }
-/* cerrar seseión---------------------------------------------------------------------------- */
+  /* cerrar sesión---------------------------------------------------------------------------- */
   logOut() {
     signOut(this.auth)
       .then((res) => {
@@ -56,22 +58,21 @@ export class HomeComponent implements OnInit {
       }
     });
     /* descargar record--------------------------------------------------------------------------- */
-    this.recordDB.getRecord().subscribe((record)=>{
-      let record_ordenado=record.sort((a:Irecord, b:Irecord)=>{
-        if(a.score>b.score) return -1
-        else if(a.score<b.score) return +1
-        else{
-          if(a.time.min<b.time.min) return -1
-          else if (a.time.min>b.time.min) return +1
-          else{
-            if(a.time.seg<b.time.seg) return -1
-            else if (a.time.seg>b.time.seg) return +1
-            else return 0
+    this.recordDB.getRecord().subscribe((record) => {
+      let record_ordenado = record.sort((a: Irecord, b: Irecord) => {
+        if (a.score > b.score) return -1;
+        else if (a.score < b.score) return +1;
+        else {
+          if (a.time.min < b.time.min) return -1;
+          else if (a.time.min > b.time.min) return +1;
+          else {
+            if (a.time.seg < b.time.seg) return -1;
+            else if (a.time.seg > b.time.seg) return +1;
+            else return 0;
           }
         }
-      })
-      this.dataRecord=record_ordenado.slice(0,5)
-
-    })
+      });
+      this.dataRecord = record_ordenado.slice(0, 5);
+    });
   }
 }

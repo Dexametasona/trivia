@@ -1,11 +1,15 @@
-<header class="flex items-center justify-center font-bold relative">
-  <button class="absolute left-2 top-1 text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-2 text-center mr-2 mb-2" (click)="back()">Back</button>
-  <button (click)="mostrar()">mostrar</button>
-  <h2 class="text-4xl text-center">TRIVIA EN INGLÉS</h2>
+<header class="flex items-center justify-end sm:justify-center font-bold relative">
+  <button
+    class="absolute left-2 top-1 text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-2 text-center mr-2 mb-2"
+    (click)="back()"
+  >
+    Back
+  </button>
+  <h2 class="text-xl sm:text-4xl pr-2 sm:pr-0">TRIVIA PERÚ</h2>
 </header>
 <!-- form login----------------------------------------------------------------->
-<div class="border-r-2">
-  <h2 class="text-center  text-4xl font-bold my-5">Iniciar Sesión</h2>
+<div class="border-r-2 formulario">
+  <h2 class="text-center text-xl md:text-4xl font-bold my-2 md:my-5">Iniciar Sesión</h2>
   <form class="p-4 rounded-lg" [formGroup]="form">
     <!-- username -->
     <div><label for="name">Correo: </label></div>
@@ -79,7 +83,10 @@
         formControlName="password"
       />
       <!-- icons input check and false -->
-      <div class="absolute top-2.5 right-1" *ngIf="form.get('password')?.touched">
+      <div
+        class="absolute top-2.5 right-1"
+        *ngIf="form.get('password')?.touched"
+      >
         <img
           src="assets/check-icon.svg"
           *ngIf="form.get('password')?.valid"
@@ -121,15 +128,15 @@
         class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-2 text-center mr-2 mb-2 disabled:from-green-400 disabled:to-green-200"
         (click)="logearse()"
       >
-        Enviar
+        Login
       </button>
     </div>
   </form>
 </div>
 
 <!-- form register-------------------------------------------------------------->
-<div class="">
-  <h2 class="text-center  text-4xl font-bold my-5">Registrarse</h2>
+<div class="formulario">
+  <h2 class="text-center text-xl md:text-4xl font-bold my-2 md:my-5">Registrarse</h2>
   <form class="p-4 rounded-lg" [formGroup]="formRegister">
     <!-- username -->
     <div><label for="name">Nombre: </label></div>
@@ -148,7 +155,10 @@
         formControlName="name"
       />
       <!-- icons input check and false -->
-      <div class="absolute top-2.5 right-1" *ngIf="formRegister.get('name')?.touched">
+      <div
+        class="absolute top-2.5 right-1"
+        *ngIf="formRegister.get('name')?.touched"
+      >
         <img
           src="assets/check-icon.svg"
           *ngIf="formRegister.get('name')?.valid"
@@ -164,7 +174,9 @@
       <!-- alerts for Validators-->
       <div
         class="error-alert"
-        *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.invalid"
+        *ngIf="
+          formRegister.get('name')?.touched && formRegister.get('name')?.invalid
+        "
       >
         <div
           class="flex p-1 text-sm text-red-800 rounded-lg"
@@ -196,14 +208,18 @@
         placeholder="usuario@gmail.com"
         class="bg-gray-50 border transition duration-250 ease-in-out text-gray-900 text-sm rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none block w-full p-2.5 pr-7"
         [ngClass]="
-          formRegister.get('email')?.untouched || formRegister.get('email')?.valid
+          formRegister.get('email')?.untouched ||
+          formRegister.get('email')?.valid
             ? 'focus:ring-green-300 border-slate-300'
             : 'focus:ring-rose-300 border-red-300'
         "
         formControlName="email"
       />
       <!-- icons input check and false -->
-      <div class="absolute top-2.5 right-1" *ngIf="formRegister.get('email')?.touched">
+      <div
+        class="absolute top-2.5 right-1"
+        *ngIf="formRegister.get('email')?.touched"
+      >
         <img
           src="assets/check-icon.svg"
           *ngIf="formRegister.get('email')?.valid"
@@ -219,7 +235,10 @@
       <!-- alerts for Validators-->
       <div
         class="error-alert"
-        *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.invalid"
+        *ngIf="
+          formRegister.get('email')?.touched &&
+          formRegister.get('email')?.invalid
+        "
       >
         <div
           class="flex p-1 text-sm text-red-800 rounded-lg"
@@ -251,14 +270,18 @@
         placeholder="Min 6 carácteres"
         class="bg-gray-50 border transition duration-250 ease-in-out text-gray-900 text-sm rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none block w-full p-2.5 pr-7"
         [ngClass]="
-          formRegister.get('password')?.untouched || formRegister.get('password')?.valid
+          formRegister.get('password')?.untouched ||
+          formRegister.get('password')?.valid
             ? 'focus:ring-green-300 border-slate-300'
             : 'focus:ring-rose-300 border-red-300'
         "
         formControlName="password"
       />
       <!-- icons input check and false -->
-      <div class="absolute top-2.5 right-1" *ngIf="formRegister.get('password')?.touched">
+      <div
+        class="absolute top-2.5 right-1"
+        *ngIf="formRegister.get('password')?.touched"
+      >
         <img
           src="assets/check-icon.svg"
           *ngIf="formRegister.get('password')?.valid"
@@ -274,7 +297,10 @@
       <!-- alerts for Validators-->
       <div
         class="error-alert"
-        *ngIf="formRegister.get('password')?.touched && formRegister.get('password')?.invalid"
+        *ngIf="
+          formRegister.get('password')?.touched &&
+          formRegister.get('password')?.invalid
+        "
       >
         <div
           class="flex p-1 text-sm text-red-800 rounded-lg"
@@ -297,7 +323,7 @@
     <div class="btn">
       <button
         [disabled]="formRegister.invalid"
-        class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-2 text-center mr-2 mb-2 disabled:from-green-400 disabled:to-green-200 "
+        class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-5 py-2 text-center mr-2 mb-2 disabled:from-green-400 disabled:to-green-200"
         (click)="registrar()"
       >
         Registrar

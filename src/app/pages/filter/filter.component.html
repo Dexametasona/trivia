@@ -1,10 +1,10 @@
 <header class="py-2">
-  <h2 class="text-6xl font-bold">Seleccione los filtros</h2>
+  <h2 class=" text-xl md:text-6xl font-bold text-center">Seleccione los filtros</h2>
 </header>
 <section class="flex flex-col items-center">
-  <h3 class="text-3xl">NIVEL DE DIFICULTAD</h3>
+  <h3 class="text-xl md:text-3xl text-center">NIVEL DE DIFICULTAD</h3>
   <form #dificultad>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         checked
@@ -12,9 +12,9 @@
         name="dificultad"
         value="facil"
         id="dificultad1"
-      /><label for="dificultad1">Facil</label>
+      /><label for="dificultad1">Fácil</label>
     </div>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         type="radio"
@@ -23,7 +23,7 @@
         id="dificultad2"
       /><label for="dificultad2">Medio</label>
     </div>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         type="radio"
@@ -35,9 +35,9 @@
   </form>
 </section>
 <section class="flex flex-col items-center">
-  <h3 class="text-3xl">CATEGORÍA</h3>
+  <h3 class="text-xl md:text-3xl">CATEGORÍA</h3>
   <form #categoria>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         checked
@@ -47,7 +47,7 @@
         id="todos"
       /><label for="todos">Todos</label>
     </div>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         type="radio"
@@ -56,7 +56,7 @@
         id="historia"
       /><label for="historia">Historia</label>
     </div>
-    <div class="text-2xl w-1/2 py-4 flex">
+    <div class="text-lg sm:text-2xl w-1/2 py-2 sm:py-4 flex">
       <input
         class="mr-4"
         type="radio"
@@ -69,7 +69,7 @@
 </section>
 <section class="flex flex-col items-center justify-evenly">
   <button
-    class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
+    class="text-white bg-gradient-to-br from-green-800 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-xs md:text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
     (click)="
       comenzar(dificultad['dificultad'].value, categoria['categoria'].value)
     "
@@ -77,7 +77,7 @@
     Comenzar
   </button>
   <button
-    class="text-slate-900 bg-gradient-to-br from-green-500 to-green-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
+    class="text-slate-900 bg-gradient-to-br from-green-500 to-green-300 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-xs md:text-2xl font-bold px-5 py-2 text-center mr-2 mb-2 shadow-lg shadow-slate-800"
     (click)="back()"
   >
     Cancelar

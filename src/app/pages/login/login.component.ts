@@ -13,7 +13,11 @@ import { AuthService } from 'src/app/services/auth-service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private location: Location, private auth: AuthService, private route:Router) {}
+  constructor(
+    private location: Location,
+    private auth: AuthService,
+    private route: Router
+  ) {}
   /* formulario login---------------------------- */
   form = new FormGroup({
     email: new FormControl('', [
@@ -53,7 +57,7 @@ export class LoginComponent {
   /* mensaje de registro-------------------------------- */
 
   alert = false;
-  mensaje!: string;
+  mensaje="";
 
   respuesta(mensaje: string) {
     this.alert = true;
@@ -70,7 +74,8 @@ export class LoginComponent {
         updateProfile(usercredential.user, {
           displayName: this.formRegister.value.name,
         });
-        this.route.navigate(["/home"])
+        this.respuesta('Usuario registrado con éxito.');
+        this.formRegister.reset();
       })
       .catch(() => {
         this.respuesta('Error, este correo ya fue registrado.');
@@ -79,20 +84,18 @@ export class LoginComponent {
 
   /* iniciar sesion---------------------------------------------------------------------------------- */
   logearse() {
-    this.auth.logIn(this.form.value as Iform)
-    .then(()=>{
-      this.route.navigate(["/home"])
-    })
-    .catch((err:FirebaseError)=>{
-      if(err.code==='auth/user-not-found') this.respuesta("Correo no registrado.")
-      else if(err.code==='auth/wrong-password') this.respuesta("Contraseña incorrecta.")
-      else console.log(err)
-    });
-  }
-  mostrar() {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    console.log(user);
+    this.auth
+      .logIn(this.form.value as Iform)
+      .then(() => {
+        this.route.navigate(['/home']);
+      })
+      .catch((err: FirebaseError) => {
+        if (err.code === 'auth/user-not-found')
+          this.respuesta('Correo no registrado.');
+        else if (err.code === 'auth/wrong-password')
+          this.respuesta('Contraseña incorrecta.');
+        else console.log(err);
+      });
   }
   /* boton regresar--------------------------------- */
   back() {

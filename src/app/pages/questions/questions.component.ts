@@ -31,6 +31,13 @@ export class QuestionsComponent implements OnInit {
       if(this.data[this.numeroDe_pregunta].rpta_correct===this.respuesta){
         this.puntaje++
       }
+      else{
+        Swal.fire({
+          icon:"error",
+          title:"Incorrecto",
+          timer:1500
+        })
+      }
       this.numeroDe_pregunta++
       this.respuesta_visible=[];
       this.alternativas()
@@ -60,6 +67,21 @@ export class QuestionsComponent implements OnInit {
       })
     }
   }
+/* rendirse------------------------------------------------------- */
+  rendirse(){
+    Swal.fire({
+      icon:"error",
+      title:"¿Seguro que desea rendirse?",
+      showConfirmButton:true,
+      showCancelButton:true,
+      confirmButtonText:"SI",
+    }).then((rpta)=>{
+      if(rpta.isConfirmed){
+        this.route.navigate(["/home"])
+      }
+    })
+  }
+
 /* marcar respuesta */
   marcar(rpta:string, este:HTMLDivElement){
     this.respuesta=rpta;
@@ -96,41 +118,46 @@ export class QuestionsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.questionDB.getQuestions().subscribe((data) => {
-      /* filtro de categoria------------------------------------------------------ */
-      if (this.questionDB.categoria !== 'todos') {
-        this.data = data.filter(
-          (question) => question.category == this.questionDB.categoria
-        );
-      } else {
-        this.data = data;
-      }
+        try{
+        /* filtro de categoria------------------------------------------------------ */
+          if (this.questionDB.categoria !== 'todos') {
+            this.data = data.filter(
+              (question) => question.category == this.questionDB.categoria
+            );
+          } else {
+            this.data = data;
+          }
 
-      /* filtro de dificultad--------------------------------------------------------- */
-      if (this.questionDB.dificultad == 'facil') {
-        this.data = this.data.filter(
-          (question) => question.dificultad == 'facil'
-        );
-      } else if (this.questionDB.dificultad == 'media') {
-        this.data = this.data.filter(
-          (question) =>
-            question.dificultad == 'facil' || question.dificultad == 'media'
-        );
-      } else {
-        this.data = this.data.filter(
-          (question) =>
-            question.dificultad == 'dificil' || question.dificultad == 'media'
-        );
-      }
+          /* filtro de dificultad--------------------------------------------------------- */
+          if (this.questionDB.dificultad == 'facil') {
+            this.data = this.data.filter(
+              (question) => question.dificultad == 'facil'
+            );
+          } else if (this.questionDB.dificultad == 'media') {
+            this.data = this.data.filter(
+              (question) =>
+                question.dificultad == 'facil' || question.dificultad == 'media'
+            );
+          } else {
+            this.data = this.data.filter(
+              (question) =>
+                question.dificultad == 'dificil' || question.dificultad == 'media'
+            );
+          }
 
-      /* ajuste de tamaño del array----------------------------------------------------------- */
-      while (this.data.length > 10) {
-        let deleted = Math.floor(Math.random() * 10);
-        this.data.splice(deleted, 1);
+          /* ajuste de tamaño del array----------------------------------------------------------- */
+          while (this.data.length > 10) {
+            let deleted = Math.floor(Math.random() * 10);
+            this.data.splice(deleted, 1);
+          }
+          /* aleatorizar alternativas------------------------------------------------------------------ */
+          this.alternativas()
+          this.iniciar()
+          console.log(this.data);
       }
-      /* aleatorizar alternativas------------------------------------------------------------------ */
-      this.alternativas()
-      this.iniciar()
-      console.log(this.data);
-    });
+      catch{
+        this.route.navigate(["/home"])
+      }
+      });
   }
 }

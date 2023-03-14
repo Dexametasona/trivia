@@ -30,10 +30,10 @@
   </div>
 </nav>
 <main class="flex flex-col items-center">
-  <h1 class="text-4xl font-bold py-4">Trivia en inglés</h1>
+  <h1 class="text-4xl font-bold py-4">Trivia PERÚ</h1>
   <div class="flex justify-between w-10/12">
-    <img src="assets/trivia-portada.svg" alt="Icon_image" />
-    <img class="reflect" src="assets/trivia-portada.svg" alt="Icon_image" />
+    <img class="portada-icon " src="assets/trivia-portada.svg" alt="Icon_image" />
+    <img class="portada-icon reflect" src="assets/trivia-portada.svg" alt="Icon_image" />
   </div>
   <div class="mt-5 w-1/2">
     <button
@@ -46,13 +46,16 @@
 </main>
 <aside>
   <h2 class="text-2xl text-center mb-3">Ranking</h2>
-  <div class="bg-slate-200 shadow-lg mx-5 p-3 rounded-lg">
-    <div *ngFor="let record of dataRecord, let i=index">
-      <p class="font-bold">{{i+1}}.-{{record.email}}</p>
-      <p>Puntaje:{{record.score}}, tiempo: {{record.time.min}}min, {{record.time.seg}}seg.</p>
+  <div class="text-sm lg:text-base bg-slate-200 shadow-lg mr-5 p-3 rounded-lg">
+    <div *ngFor="let record of dataRecord; let i = index">
+      <p class="font-bold">{{ i + 1 }}.-{{ record.email }}</p>
+      <span>
+        Puntaje:{{ record.score }}, tiempo: {{ record.time.min }}min,
+        {{ record.time.seg }}seg.
+      </span>
     </div>
   </div>
 </aside>
-<footer class="text-center text-2xl">
+<footer class="text-center text-base sm:text-2xl">
   <p>Debera registrarse para aparecer en el ranking</p>
 </footer>
