@@ -9,3 +9,21 @@
   color: var(--font_color);
   font-family: var(--font_special), sans-serif;
 }
+.alternativa_marcada{
+  background-color: #507A00;
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.99);
+  transform: scale(1.2,1);
+}
+.alternativas{
+  transition: all ease-in-out 0.2s;
+}
+img{
+  animation: vibrar 0.1s infinite;
+}
+@keyframes vibrar{
+  0%  { -webkit-transform:rotateZ(-5deg); }
+  50% { -webkit-transform:rotateZ( 0deg); }
+  100%{ -webkit-transform:rotateZ( 5deg); }
+}

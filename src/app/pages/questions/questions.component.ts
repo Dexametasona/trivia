@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { getAuth } from '@firebase/auth';
 import { Iquestion } from 'src/app/interface/iquestion';
 import { QuestionDBService } from 'src/app/services/question-db.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-questions',
@@ -8,7 +11,7 @@ import { QuestionDBService } from 'src/app/services/question-db.service';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  constructor(private questionDB: QuestionDBService) {}
+  constructor(private questionDB: QuestionDBService, private route:Router) {}
   data: Iquestion[] = [
     {
       category: '',
@@ -20,7 +23,53 @@ export class QuestionsComponent implements OnInit {
   ];
   respuesta_visible: string[] = [];
   numeroDe_pregunta=0;
+  respuesta="";
+  puntaje=0;
+/* button next question------------------------------------------------------------- */
+  siguiente(){
+    if(this.numeroDe_pregunta<=8){
+      if(this.data[this.numeroDe_pregunta].rpta_correct===this.respuesta){
+        this.puntaje++
+      }
+      this.numeroDe_pregunta++
+      this.respuesta_visible=[];
+      this.alternativas()
+    }
+    else{
+      clearInterval(this.control)
+      const user=getAuth().currentUser;
+      if(user){
+        this.questionDB.addRecord({
+          email:user.email!,
+          time:{
+            min:this.min,
+            seg:this.seg
+          },
+          score:this.puntaje
+        })
+      }
 
+      Swal.fire({
+        title:"Finalizado",
+        icon:"info",
+        text:`Su puntaje es ${this.puntaje}/10.`,
+        timer:5000,
+        timerProgressBar:true
+      }).then(()=>{
+        this.route.navigate(["/home"])
+      })
+    }
+  }
+/* marcar respuesta */
+  marcar(rpta:string, este:HTMLDivElement){
+    this.respuesta=rpta;
+    const hermanos=document.querySelectorAll(`.alternativas`)
+    hermanos.forEach(elemento=>{
+      elemento.classList.remove("alternativa_marcada")
+    })
+    este.classList.add("alternativa_marcada")
+  }
+/* aleatorizar alternativas---------------------------------------------------------------- */
   alternativas(){
     this.respuesta_visible.push(this.data[this.numeroDe_pregunta].rpta_correct);
       this.respuesta_visible = this.respuesta_visible.concat(
@@ -31,6 +80,19 @@ export class QuestionsComponent implements OnInit {
             return Math.random() - 0.5;
           });
       }
+  }
+  seg=0;
+  min=0;
+  control!:NodeJS.Timer;
+  /* cronometro------------------------------------------------------------------------- */
+  iniciar(){
+    this.control=setInterval(()=>{
+      if(this.seg<59) this.seg++
+      else{
+        this.seg=0;
+        this.min++
+      }
+    }, 1000)
   }
   ngOnInit(): void {
     this.questionDB.getQuestions().subscribe((data) => {
@@ -67,6 +129,7 @@ export class QuestionsComponent implements OnInit {
       }
       /* aleatorizar alternativas------------------------------------------------------------------ */
       this.alternativas()
+      this.iniciar()
       console.log(this.data);
     });
   }

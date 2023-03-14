@@ -6,7 +6,7 @@ import { FilterComponent } from './filter/filter.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { TimePipe } from '../pipes/time.pipe';
 
 
 
@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     FilterComponent,
     QuestionsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TimePipe
   ],
   imports: [
     CommonModule,

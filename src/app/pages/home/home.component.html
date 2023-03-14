@@ -46,11 +46,12 @@
 </main>
 <aside>
   <h2 class="text-2xl text-center mb-3">Ranking</h2>
-  <ol class="bg-slate-200 shadow-lg mx-5 p-3 rounded-lg">
-    <li>comunismo</li>
-    <li>comunismo</li>
-    <li>comunismo</li>
-  </ol>
+  <div class="bg-slate-200 shadow-lg mx-5 p-3 rounded-lg">
+    <div *ngFor="let record of dataRecord, let i=index">
+      <p class="font-bold">{{i+1}}.-{{record.email}}</p>
+      <p>Puntaje:{{record.score}}, tiempo: {{record.time.min}}min, {{record.time.seg}}seg.</p>
+    </div>
+  </div>
 </aside>
 <footer class="text-center text-2xl">
   <p>Debera registrarse para aparecer en el ranking</p>
