@@ -11,8 +11,9 @@
   color: var(--font_color);
   font-family: var(--font_special), sans-serif;
 }
-nav {
-  grid-column: span 2;
+main {
+  grid-row: span 2;
+  order: -1;
 }
 footer {
   grid-column: span 2;
@@ -35,38 +36,68 @@ footer {
 .desplegar {
   height: 20vh;
 }
-
+/* media para chrome barra de descargas------------------------------------------ */
 @media screen and (max-height: 695px) {
   :host {
     height: 90vh;
   }
 }
+/* medai para las imagenes de portada*/
 @media screen and (max-width:1200px){
   .portada-icon{
     width: 50%;
   }
 }
+/* media font size ranking */
 @media screen and (max-width:1060px){
   aside>div{
     font-size: 0.875rem;
   }
 }
-@media screen and (max-width:875px){
-  aside span{
+/* una imagen de portada e ocultar la imagen reflejo */
+@media screen and (max-width:800px){
+  .portada{
+    justify-content: center !important;
+    flex-grow: 1;
+    img{
+      height: auto;
+      width: 70%;
+    }
+  }
+  .reflect{
     display: none;
   }
 }
+/* reubicacion de del aside, nav, main */
 @media screen and (max-width:650px){
   :host{
     grid-template: repeat(4, min-content)/1fr 1fr;
     min-height: 100vh;
   }
+  nav{
+    grid-column: span 2;
+  }
+  main {
+    grid-row: span 1;
+    order: 0;
+    h1{
+      font-size: 3rem;
+    }
+    .portada-icon{
+      width: 50%;
+    }
+  }
   main, aside{
     grid-column: span 2;
   }
-  aside>div{
-    margin-left: 1.25rem;
-    overflow: hidden;
+  aside{
+    span{
+      display: none;
+    }
+    div{
+      margin-left: 1.25rem;
+      overflow: hidden;
+    }
   }
 }
 @media screen and (max-width:350px) {
